@@ -288,7 +288,7 @@ class CampusController extends Controller {
             $d = date("w");
             
             for($i=1 ; $i<3 ; $i++){   
-                 //$d = date("w");
+                 
                  $d++;
                 //后面天气直接转拼音，图片带有“转”的天气
                 $picurl = C('PUBLIC_LINE').'Image/weather/day/'.$this->changeWeather($forecastWea[$i]['cond']['txt_d']).'.png';
