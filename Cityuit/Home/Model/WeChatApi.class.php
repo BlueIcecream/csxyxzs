@@ -43,6 +43,7 @@ class WeChatApi{
         $signature = isset($_GET["signature"])?$_GET["signature"]:'';
         $timestamp = isset($_GET["timestamp"])?$_GET["timestamp"]:'';
         $nonce = isset($_GET["nonce"])?$_GET["nonce"]:'';
+<<<<<<< HEAD
 	$token = C('WECHAT_TOKEN');
 	$tmpArr = array($token, $timestamp, $nonce);
 	sort($tmpArr, SORT_STRING);
@@ -50,6 +51,15 @@ class WeChatApi{
 	$tmpStr = sha1( $tmpStr );
 
 	if( $tmpStr == $signature ){
+=======
+		$token = C('WECHAT_TOKEN');
+		$tmpArr = array($token, $timestamp, $nonce);
+		sort($tmpArr, SORT_STRING);
+		$tmpStr = implode( $tmpArr );
+		$tmpStr = sha1( $tmpStr );
+
+		if( $tmpStr == $signature ){
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
             return true;        
         }else{
             //接口验证失败，或者不安全请求

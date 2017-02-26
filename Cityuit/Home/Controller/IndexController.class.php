@@ -6,7 +6,11 @@ class IndexController extends Controller {
     public function index(){
        if(isset($_GET["signature"])){   //默认为微信服务器发送的请求
             $weChat = new WeChatApi();
+<<<<<<< HEAD
             $weChat->valid();  //每次请求都验证,可以省去，但是在验证微信公众号的时候必须打开 
+=======
+            /* $weChat->valid();  //每次请求都验证,可以省去，但是在验证微信公众号的时候必须打开 */
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
             $type = $weChat->getRev()->getRevType();
             switch($type) {
                 case WeChatApi::MSGTYPE_TEXT:

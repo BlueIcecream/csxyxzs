@@ -12,13 +12,21 @@
 一、发放准考证前将数据库用户保存的准考证号清空，发放准靠证时提示大家保存准考证号到数据库。  
 二、四六级成绩出来之前将数据库中的四六级成绩清空，四六级成绩出来以后提醒大家查询四六级成绩。  
 添加crontab定时任务,每天24点执行  
+<<<<<<< HEAD
 `0 0 * * * curl http://yourserver/csxyxzs-master/index.php/Home/Students/delEmpty`  将空教室信息从缓存清空
+=======
+`0 0 * * * curl http://localhost/index.php/Home/Students/delEmpty`  将空教室信息从缓存清空
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
 
 ###客户端接口使用说明
 
 #####图书馆查询
 
+<<<<<<< HEAD
 `$ curl http://yourserver/index.php/Home/Campus/appLibrary/title/*****`  
+=======
+`$ curl http://localhost/index.php/Home/Campus/appLibrary/title/*****`  
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
 
 ######响应
 
@@ -26,7 +34,11 @@
 
 #####食堂档口查询
 
+<<<<<<< HEAD
 `$ curl http://yourserver/index.php/Home/Campus/appShitang`
+=======
+`$ curl http://localhost/index.php/Home/Campus/appShitang`
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
 
 ######响应
 
@@ -34,7 +46,11 @@
 
 #####档口菜单查询
 
+<<<<<<< HEAD
 `$ curl http://yourserver/index.php/Home/Campus/appCaidan/id/**`
+=======
+`$ curl http://localhost/index.php/Home/Campus/appCaidan/id/**`
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
 
 ######响应
 
@@ -42,7 +58,11 @@
 
 #####四六级成绩查询
 
+<<<<<<< HEAD
 `$ curl -d 'name=姓名&zkzh=准考证号' http://yourserver/index.php/Home/Campus/appQueryCet`
+=======
+`$ curl -d 'name=姓名&zkzh=准考证号' http://localhost/index.php/Home/Campus/appQueryCet`
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
 
 ######响应
 

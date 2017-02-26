@@ -8,7 +8,10 @@ use \Home\Model\WeChatApi;
 class SettingController extends Controller {
     public function index(){
         //$this->display();
+<<<<<<< HEAD
         //echo "sssssss";
+=======
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
     }
 
     public function getCustomize(){
@@ -24,7 +27,10 @@ class SettingController extends Controller {
     
     //设置自定义菜单
     public function setCustomize(){
+<<<<<<< HEAD
             
+=======
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
         $weChat = new WeChatApi();
         //设置菜单
         $newmenu =  array(
@@ -37,16 +43,23 @@ class SettingController extends Controller {
                             "name" => "自习室",
                             "key" => "classroom"
                         ),
+<<<<<<< HEAD
                           1 => array (
+=======
+                        1 => array (
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                             "type" => "click",
                             "name" => "考试时间",
                             "key" => "exam"
                         ),
+<<<<<<< HEAD
                      /*    1 => array (
                             "type" => "view",
                             "name" => "考试时间",
                             "url" => "http://123.206.60.17/csxyxzs-master/Public/Html/time.html"
                         ),*/
+=======
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                         2 => array (
                             "type" => "click",
                             "name" => "期末成绩",
@@ -110,18 +123,25 @@ class SettingController extends Controller {
                         2 => array (
                             "type" => "view",
                             "name" => "关于我们",
+<<<<<<< HEAD
                             "url" => "http://123.206.60.17/csxyxzs-master/index.php"
+=======
+                            "url" => "http://cityuit.wuxiwei.cn/index.php"
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                         ),
                         3 => array (
                             "type" => "click",
                             "name" => "解绑操作",
                             "key" => "bind"
                         ),
+<<<<<<< HEAD
                          4 => array (
                             "type" => "view",
                             "name" => "城院全景",
                             "url" => "https://720yun.com/t/a9625wa6xnw?from=singlemessage&openSpeakModal=true&pano_id=62962"
                         ),
+=======
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                     ),
                 ),
             ),
@@ -148,7 +168,11 @@ class SettingController extends Controller {
 
     /*
      *先将Public/Html/course.html文件内容改为最新的信息。调用此方法将课程信息存入数据库，供查用。
+<<<<<<< HEAD
      *每次先将数据库tp_techroom和tp_classroom清空
+=======
+     *每次先将数据库tp_useroom和tp_classroom清空
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
      */
     public function setCourse($delete){       //参数是故意放置的，防止不小心更改数据库，每次使用先将参数删除
         //通过正则将页面中的信息提取

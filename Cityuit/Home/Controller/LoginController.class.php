@@ -53,7 +53,11 @@ class LoginController extends Controller {
                     'username'=>$studentno,
                     'password'=>$password
                 );      
+<<<<<<< HEAD
                 $resultJson = http_post(C('CITY_LINK').'login',$student);//实现模拟登录node.js
+=======
+                $resultJson = http_post(C('CITY_LINK').'login',$student);
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                 $resultArr = json_decode($resultJson, true);
                 switch ( $resultArr['status'] ) {
                     case 'ok':    //登录成功

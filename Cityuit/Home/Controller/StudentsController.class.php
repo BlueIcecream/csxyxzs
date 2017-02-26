@@ -550,11 +550,19 @@ class StudentsController extends Controller {
     public function dealTeam($weChat){
         $studentno = A('Login')->hasBind($weChat, $weChat->getRevFrom());
         $week = $this->calcWeek(date("Y-m-d",strtotime('+0day')));      //获得查询日期的周数，日期同上处理
+<<<<<<< HEAD
        // if(0 < $week && $week < 21){
             $weChat->text("当前不是考试周！学习不是一朝一夕的事情，需要平时积累，需要平时的勤学苦练。我们一起加油！")->reply();
       //  }else{
             //考试安排开发
        // }
+=======
+        if(0 < $week && $week < 21){
+            $weChat->text("当前不是考试周！学习不是一朝一夕的事情，需要平时积累，需要平时的勤学苦练。我们一起加油！")->reply();
+        }else{
+            //考试安排开发
+        }
+>>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
         exit;
     }
 
