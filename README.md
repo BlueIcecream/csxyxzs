@@ -18,7 +18,7 @@
 
 #####图书馆查询
 
-`$ curl http://yourserver/index.php/Home/Campus/appLibrary/title/*****`  
+`$ curl http://yourserver/csxyxzs-master/index.php/Home/Campus/appLibrary/title/*****`  
 
 ######响应
 
@@ -26,7 +26,7 @@
 
 #####食堂档口查询
 
-`$ curl http://yourserver/index.php/Home/Campus/appShitang`
+`$ curl http://yourserver/csxyxzs-master/index.php/Home/Campus/appShitang`
 
 ######响应
 
@@ -34,7 +34,7 @@
 
 #####档口菜单查询
 
-`$ curl http://yourserver/index.php/Home/Campus/appCaidan/id/**`
+`$ curl http://yourserver/csxyxzs-master/index.php/Home/Campus/appCaidan/id/**`
 
 ######响应
 
@@ -42,7 +42,7 @@
 
 #####四六级成绩查询
 
-`$ curl -d 'name=姓名&zkzh=准考证号' http://yourserver/index.php/Home/Campus/appQueryCet`
+`$ curl -d 'name=姓名&zkzh=准考证号' http://yourserver/csxyxzs-master/index.php/Home/Campus/appQueryCet`
 
 ######响应
 
