@@ -38,11 +38,7 @@ class CampusController extends Controller {
     public function queryLibrary(){
         $title = I("title", "");
         /* $p = I('p') ? I('p') : 2; */
-<<<<<<< HEAD
         $Library = M('library_books');
-=======
-        $Library = M('Library');
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
         $where['title'] = array('like', '%'.$title.'%');
         $bookArr = $Library->where($where)->select();
         $this->assign('book',$bookArr);     
@@ -159,11 +155,7 @@ class CampusController extends Controller {
     /*
      *处理菜单查询
      */
-<<<<<<< HEAD
     public function dealCaidan($weChat,$num){
-=======
-    public function dealCaidan($weChat, $num){
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
         
         $arr = S($weChat->getRevFrom().'_date');   //编号数据缓存   这一步一般情况下必须紧跟上一步，不然没有数据，
         $arr = json_decode($arr);
@@ -172,10 +164,7 @@ class CampusController extends Controller {
             $Caidan = M('Caidan');
             $where['id']=$id;
             $caidanArr = $Caidan->where($where)->select();
-<<<<<<< HEAD
             
-=======
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
             $this->showCaidan($weChat, $caidanArr);
         }else{
             $weChat->text("编号错误，重新输入\n\n或输入【exit】退出操作。")->reply();
@@ -260,7 +249,6 @@ class CampusController extends Controller {
      *天气预报处理
      */
     public function dealWeather($weChat){
-<<<<<<< HEAD
         $weekarray=array("日","一","二","三","四","五","六"); //先定义一个数组
         echo "星期".$weekarray[date("w")];
         $res = $this->getWeather();
@@ -275,38 +263,22 @@ class CampusController extends Controller {
         if($todayWea){   //如果数据存在或者获取正确返回天气
 
            
-=======
-        $res = $this->getWeather();
-        $weaArr = json_decode($res, true);
-        $todayWea = $weaArr['retData']['today']['type'];   //今日天气
-        if($todayWea){   //如果数据存在或者获取正确返回天气
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
             $weather = array();
             $top = array(
                 'Title' => '大连天气预报',
             );
             $weather[] = $top;   //添加头
 
-<<<<<<< HEAD
             //$todayArr = $weaArr['retData']['today'];  //今天天气所有信息
               $todayArr = $weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0];
             if(strpos($todayWea, '转') !== false){ //如果有转则根据查询时间显示图片
                 $weaDay = $this->changeWeather(explode("转", $todayWea)['txt_d']);    //分割提取白天的天气并转为拼音
                 $weaNight = $this->changeWeather(explode("转", $todayWea)['txt_n']);   //晚上
-=======
-            $todayArr = $weaArr['retData']['today'];  //今天天气所有信息
-            if(strpos($todayWea, '转') !== false){ //如果有转则根据查询时间显示图片
-                $weaDay = $this->changeWeather(explode("转", $todayWea)[0]);    //分割提取白天的天气并转为拼音
-                $weaNight = $this->changeWeather(explode("转", $todayWea)[1]);   //晚上
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
             }else{
                 $weaDay = $weaNight = $this->changeWeather($todayWea);    //天气并转为拼音
             }
             $now = date('H', time());
-<<<<<<< HEAD
             
-=======
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
             if($now > 17 || $now < 6){   //晚上就发送晚上的图片
                 $picurl = C('PUBLIC_LINE').'Image/weather/night/'.$weaNight.'.png';
             }else{
@@ -314,17 +286,12 @@ class CampusController extends Controller {
             }
             $today = array(
                 //天气字符串连接
-<<<<<<< HEAD
                 //'Title'=>substr($todayArr['date'], 5).' '.$todayArr['week']."\n".$todayArr['type'].' '.$todayArr['fengxiang'].$todayArr['fengli'].' '.$todayArr['lowtemp'].'~'.$todayArr['hightemp'],
                 'Title'=>substr($todayArr['date'], 5)." 星期".''.$weekarray[date("w")]."\n".$todayArr['cond']['txt_d'].' '.$todayArr['tmp']['min'].'~'.$todayArr['tmp']['max']."℃".' '.$todayArr['wind']['dir'].$todayArr['wind']['sc'],
-=======
-                'Title'=>substr($todayArr['date'], 5).' '.$todayArr['week']."\n".$todayArr['type'].' '.$todayArr['fengxiang'].$todayArr['fengli'].' '.$todayArr['lowtemp'].'~'.$todayArr['hightemp'],
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                 'PicUrl'=>$picurl,  
             );
             $weather[] = $today;    //添加今日的天气
 
-<<<<<<< HEAD
             //$forecastWea = $weaArr['retData']['forecast'];
             $forecastWea = $weaArr['HeWeather data service 3.0'][0]['daily_forecast'];
             /* for($i=0 ; $i<count($forecastwea) ; $i++){ */    //默认四天
@@ -340,15 +307,6 @@ class CampusController extends Controller {
                     
                     'Title'=>substr($forecastWea[$i]['date'], 5)." 星期".''.$weekarray[$d == 7 ? 0 : ($d == 8 ? 1 : $d )]."\n".$forecastWea[$i]['cond']['txt_d'].' '.$forecastWea[$i]['tmp']['min'].'~'.$forecastWea[$i]['tmp']['max']."℃".' '.$forecastWea[$i]['wind']['dir'].$forecastWea[$i]['wind']['sc'],
                 
-=======
-            $forecastWea = $weaArr['retData']['forecast'];
-            /* for($i=0 ; $i<count($forecastwea) ; $i++){ */    //默认四天
-            for($i=0 ; $i<2 ; $i++){   
-                //后面天气直接转拼音，图片带有“转”的天气
-                $picurl = C('PUBLIC_LINE').'Image/weather/day/'.$this->changeWeather($forecastWea[$i]['type']).'.png';
-                $forecast = array(
-                    'Title'=>substr($forecastWea[$i]['date'], 5).' '.$forecastWea[$i]['week']."\n".$forecastWea[$i]['type'].' '.$forecastWea[$i]['fengxiang'].$forecastWea[$i]['fengli'].' '.$forecastWea[$i]['lowtemp'].'~'.$forecastWea[$i]['hightemp'],
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
                     'PicUrl'=>$picurl,  
                 );
                 $weather[] = $forecast;    //添加今日的天气
@@ -365,7 +323,6 @@ class CampusController extends Controller {
      */
     public function getWeather(){
         $ch = curl_init();
-<<<<<<< HEAD
        // $url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=大连&cityid=101070201';
           $url = 'http://apis.baidu.com/heweather/pro/weather?city=dalian';
          // $url = 'http://apis.baidu.com/heweather/pro/attractions?cityid=CN10101010018A';
@@ -373,11 +330,6 @@ class CampusController extends Controller {
          $header = array(
             'apikey:'.C('BAIDUAPI_KEY'),
 	   //  'apikey:7eccb198bf75c8e9ecf3ca29cc84cffd',
-=======
-        $url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=大连&cityid=101070201';
-        $header = array(
-            'apikey:'.C('BAIDUAPI_KEY'),
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
         );
         // 添加apikey到header
         curl_setopt($ch, CURLOPT_HTTPHEADER  , $header);
@@ -385,13 +337,9 @@ class CampusController extends Controller {
         // 执行HTTP请求
         curl_setopt($ch , CURLOPT_URL , $url);
         $res = curl_exec($ch);
-<<<<<<< HEAD
        
         return $res;
 
-=======
-        return $res;
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
     }
 
     /*
@@ -759,9 +707,6 @@ class CampusController extends Controller {
         }
 
     }
-<<<<<<< HEAD
    
-=======
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
 
 }

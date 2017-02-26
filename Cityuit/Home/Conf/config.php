@@ -20,13 +20,8 @@ return array(
     'DB_TYPE'   => 'mysql', // 数据库类型
     'DB_HOST'   => '127.0.0.1', // 服务器地址
     'DB_NAME'   => 'cityuit', // 数据库名
-<<<<<<< HEAD
     'DB_USER'   => 'xxxxxx', // 用户名
     'DB_PWD'    => 'xxxxxx', // 密码
-=======
-    'DB_USER'   => '', // 用户名
-    'DB_PWD'    => '', // 密码
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
     'DB_PORT'   => 3306, // 端口
     'DB_PARAMS' =>  array(), // 数据库连接参数
     'db_prefix' => 'tp_', // 数据库表前缀 
@@ -42,7 +37,6 @@ return array(
 
     //自定义常量
 
-<<<<<<< HEAD
     'PUBLIC_LINE' => "http://localhost/csxyxzs-master/Public/",   //服务器下的Public绝对路径
     'START_DATE_OF_SCHOOL' => 'xxxxxx',   //开学前一天日期，每学期需要手动修改
    //校网接口*/
@@ -54,20 +48,6 @@ return array(
     /* 'WECHAT_APPSECRET' => "xxxxxx",      //AppSecret(应用密钥) */
        
     /* 'BAIDUAPI_KEY' => "7eccb198bf75c8e9ecf3ca29cc84cffd",   //百度api接口 */
-=======
-    /* 'PUBLIC_LINE' => "http://localhost/Public/",   //服务器下的Public绝对路径 */
-
-    /* 'START_DATE_OF_SCHOOL' => '2016-3-6',   //开学前一天日期，每学期需要手动修改 */
-
-    /* 'CITY_LINK' => 'http://localhost/api/',   //校网接口 */
-    /* 'CITY_LINK' => 'http://xxxxxx',   //校网登录验证接口 */
-	/* 'WECHAT_TOKEN' => "xxxxxx", */
-    /* 'WECHAT_APPID' => "xxxxxx",      //AppID(应用ID) 为了安全只有在使用的时候设置 */
-    /* 'WECHAT_APPSECRET' => "xxxxxx",      //AppSecret(应用密钥) */
-
-    /* 'BAIDUAPI_KEY' => "",   //百度api接口 */
-
->>>>>>> e4edaa2bbead922595e6193d287d8473e27b3248
     /* 'AUTH_CODE_KEY' => "xxxxxx",     //为加密算法提供key值 */
     /* 'AUTH_CODE_TIME' => "",     //key值有效时间 */
 );
