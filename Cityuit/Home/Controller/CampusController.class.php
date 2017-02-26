@@ -252,14 +252,9 @@ class CampusController extends Controller {
         $weekarray=array("日","一","二","三","四","五","六"); //先定义一个数组
         echo "星期".$weekarray[date("w")];
         $res = $this->getWeather();
-       // echo $res;
         $weaArr = json_decode($res, true);
-          
-       // var_dump ($weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0]);
-         
-       // $todayWea = $weaArr['retData']['today']['type'];   //今日天气
-          $todayWea =$weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0]['cond']['txt_d'];
-         //     echo $todayWea;
+       // var_dump ($weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0]);//测试是否获取到天气数据 
+          $todayWea =$weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0]['cond']['txt_d'];//今日天气
         if($todayWea){   //如果数据存在或者获取正确返回天气
 
            
@@ -268,9 +263,7 @@ class CampusController extends Controller {
                 'Title' => '大连天气预报',
             );
             $weather[] = $top;   //添加头
-
-            //$todayArr = $weaArr['retData']['today'];  //今天天气所有信息
-              $todayArr = $weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0];
+              $todayArr = $weaArr['HeWeather data service 3.0'][0]['daily_forecast'][0]; //今天天气所有信息
             if(strpos($todayWea, '转') !== false){ //如果有转则根据查询时间显示图片
                 $weaDay = $this->changeWeather(explode("转", $todayWea)['txt_d']);    //分割提取白天的天气并转为拼音
                 $weaNight = $this->changeWeather(explode("转", $todayWea)['txt_n']);   //晚上
@@ -286,13 +279,10 @@ class CampusController extends Controller {
             }
             $today = array(
                 //天气字符串连接
-                //'Title'=>substr($todayArr['date'], 5).' '.$todayArr['week']."\n".$todayArr['type'].' '.$todayArr['fengxiang'].$todayArr['fengli'].' '.$todayArr['lowtemp'].'~'.$todayArr['hightemp'],
                 'Title'=>substr($todayArr['date'], 5)." 星期".''.$weekarray[date("w")]."\n".$todayArr['cond']['txt_d'].' '.$todayArr['tmp']['min'].'~'.$todayArr['tmp']['max']."℃".' '.$todayArr['wind']['dir'].$todayArr['wind']['sc'],
                 'PicUrl'=>$picurl,  
             );
             $weather[] = $today;    //添加今日的天气
-
-            //$forecastWea = $weaArr['retData']['forecast'];
             $forecastWea = $weaArr['HeWeather data service 3.0'][0]['daily_forecast'];
             /* for($i=0 ; $i<count($forecastwea) ; $i++){ */    //默认四天
             $d = date("w");
@@ -303,8 +293,7 @@ class CampusController extends Controller {
                 //后面天气直接转拼音，图片带有“转”的天气
                 $picurl = C('PUBLIC_LINE').'Image/weather/day/'.$this->changeWeather($forecastWea[$i]['cond']['txt_d']).'.png';
                 $forecast = array(
-                    //'Title'=>substr($forecastWea[$i]['date'], 5).' '.$forecastWea[$i]['week']."\n".$forecastWea[$i]['type'].' '.$forecastWea[$i]['fengxiang'].$forecastWea[$i]['fengli'].' '.$forecastWea[$i]['lowtemp'].'~'.$forecastWea[$i]['hightemp'],
-                    
+                
                     'Title'=>substr($forecastWea[$i]['date'], 5)." 星期".''.$weekarray[$d == 7 ? 0 : ($d == 8 ? 1 : $d )]."\n".$forecastWea[$i]['cond']['txt_d'].' '.$forecastWea[$i]['tmp']['min'].'~'.$forecastWea[$i]['tmp']['max']."℃".' '.$forecastWea[$i]['wind']['dir'].$forecastWea[$i]['wind']['sc'],
                 
                     'PicUrl'=>$picurl,  
@@ -322,11 +311,8 @@ class CampusController extends Controller {
      *获取天气接口
      */
     public function getWeather(){
-        $ch = curl_init();
-       // $url = 'http://apis.baidu.com/apistore/weatherservice/recentweathers?cityname=大连&cityid=101070201';
-          $url = 'http://apis.baidu.com/heweather/pro/weather?city=dalian';
-         // $url = 'http://apis.baidu.com/heweather/pro/attractions?cityid=CN10101010018A';
-        // $url = 'https://free-api.heweather.com/x3/weather?cityid=101070201';
+         $ch = curl_init();
+         $url = 'http://apis.baidu.com/heweather/pro/weather?city=dalian';
          $header = array(
             'apikey:'.C('BAIDUAPI_KEY'),
 	   //  'apikey:7eccb198bf75c8e9ecf3ca29cc84cffd',
